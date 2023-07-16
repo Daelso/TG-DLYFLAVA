@@ -6,3 +6,4 @@
 
 BadTeammate = Host
 Armolitskiy = Host
+Daelso = Host

@@ -1615,6 +1615,7 @@
 #include "code\modules\antagonists\fugitive\hunter.dm"
 #include "code\modules\antagonists\gang\gang.dm"
 #include "code\modules\antagonists\gang\outfits.dm"
+#include "code\modules\antagonists\garou\garou.dm"
 #include "code\modules\antagonists\greentext\greentext.dm"
 #include "code\modules\antagonists\highlander\highlander.dm"
 #include "code\modules\antagonists\magic_servant\servant.dm"
