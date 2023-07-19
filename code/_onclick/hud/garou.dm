@@ -11,7 +11,7 @@
 	icon_state = "orbit"
 
 /atom/movable/screen/garou/orbit/Click()
-	usr >> 'meme'
+	to_chat(src, "Henlo")
 
 
 /datum/hud/garou/New(mob/owner)

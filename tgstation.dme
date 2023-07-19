@@ -238,6 +238,7 @@
 #include "code\_onclick\hud\drones.dm"
 #include "code\_onclick\hud\families.dm"
 #include "code\_onclick\hud\fullscreen.dm"
+#include "code\_onclick\hud\garou.dm"
 #include "code\_onclick\hud\generic_dextrous.dm"
 #include "code\_onclick\hud\ghost.dm"
 #include "code\_onclick\hud\guardian.dm"
