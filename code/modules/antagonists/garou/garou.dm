@@ -2,11 +2,11 @@
 	name = "Garou"
 	antagpanel_category = "Garou"
 	job_rank = ROLE_GAROU
-	antag_hud_type = ANTAG_HUD_NINJA //leaving as ninja because idk about huds
-	antag_hud_name = "space_ninja"
+	antag_hud_type = ANTAG_HUD_GAROU//leaving as ninja because idk about huds
+	antag_hud_name = "garou"
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
-	antag_moodlet = /datum/mood_event/focused
+	antag_moodlet = /datum/mood_event/badass_antag
 	///Whether or not this garou will obtain objectives
 	var/give_objectives = TRUE
 
