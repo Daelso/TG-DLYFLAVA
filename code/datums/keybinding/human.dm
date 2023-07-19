@@ -62,10 +62,12 @@
 	full_name = " Enable or disable blocking mod"
 	description = "Toggles blocking mode for combat"
 	keybind_signal = COMSIG_KB_HUMAN_BLOCK
-/datum/keybinding/human/block/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	H.SwitchBlocking
-	return TRUE
+
+	//idk what this is or how tf it broke but one day it seems to have stopped playing nice
+// /datum/keybinding/human/block/down(client/user)
+// 	. = ..()
+// 	if(.)
+// 		return
+// 	var/mob/living/carbon/human/H = user.mob
+// 	H.SwitchBlocking
+// 	return TRUE
