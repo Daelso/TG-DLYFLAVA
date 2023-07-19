@@ -30,11 +30,7 @@
 	antag_memory += "My caern has fallen, Gaia cries out for vengeance. The Wyrm-Spawn <font color='red'><B>MUST PAY</B></font>!<br>"
 	antag_memory += "You're lost to hauglosk, raging down from the redwood forests you bring the vengeance of Gaia. Create a legendary ending to your tale.<br>"
 
-/datum/objective/gaias_vengeance
-	var/wyrm_kills = 0
-
-ntagonist/garou/proc/addObjectives()
-
+/datum/antagonist/garou/proc/addObjectives()
 	//Door jacks, flag will be set to complete on when the last door is hijacked
 	var/datum/objective/gaias_vengeance/killobj = new /datum/objective/gaias_vengeance
 	killobj.wyrm_kills = rand(5,15)
@@ -45,6 +41,12 @@ ntagonist/garou/proc/addObjectives()
 	var/datum/objective/martyr/martyrdom = new
 	martyrdom.owner = owner
 	objectives += martyrdom
+
+
+/datum/objective/gaias_vengeance
+	var/wyrm_kills = 0
+
+
 
 /datum/antagonist/garou/greet()
 	SEND_SOUND(owner.current, sound('sound/voice/howl.ogg'))
