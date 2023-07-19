@@ -9,8 +9,10 @@
 	antag_moodlet = /datum/mood_event/focused
 	///Whether or not this garou will obtain objectives
 	var/give_objectives = TRUE
-	///Whether or not this garou receives the standard equipment
-	var/give_equipment = TRUE
+
+	var/rage = 3 //Start right in the middle at 3 rage
+	var/min_rage = 1
+	var/max_rage = 5
 
 /datum/antagonist/garou/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/garou = mob_override || owner.current
@@ -21,41 +23,23 @@
 	remove_antag_hud(antag_hud_type, garou)
 
 /**
- * Proc that equips the space ninja outfit on a given individual.  By default this is the owner of the antagonist datum.
- *
- * Proc that equips the space ninja outfit on a given individual.  By default this is the owner of the antagonist datum.
- * Arguments:
- * * ninja - The human to receive the gear
- * * Returns a proc call on the given human which will equip them with all the gear.
- */
-/datum/antagonist/garou/proc/equip_space_ninja(mob/living/carbon/human/ninja = owner.current)
-	return ninja.equipOutfit(/datum/outfit/ninja)
-
-/**
  * Proc that adds the proper memories to the antag datum
  *
- * Proc that adds the ninja starting memories to the owner of the antagonist datum.
  */
 /datum/antagonist/garou/proc/addMemories()
 	antag_memory += "My caern has fallen, Gaia cries out for vengeance. The Wyrm-Spawn <font color='red'><B>MUST PAY</B></font>!<br>"
 	antag_memory += "You're lost to hauglosk, raging down from the redwood forests you bring the vengeance of Gaia. Create a legendary ending to your tale.<br>"
 
 /datum/objective/gaias_vengeance
-	explanation_text = "Rip apart at least 5 wyrm-spawn."
+	var/wyrm_kills = 0
 
-
-/**
- * Proc that adds all the ninja's objectives to the antag datum.
- *
- * Proc that adds all the ninja's objectives to the antag datum.  Called when the datum is gained.
- */
-/datum/antagonist/garou/proc/addObjectives()
+ntagonist/garou/proc/addObjectives()
 
 	//Door jacks, flag will be set to complete on when the last door is hijacked
-	var/datum/objective/door_jack/doorobjective = new /datum/objective/door_jack()
-	doorobjective.doors_required = rand(15,40)
-	doorobjective.explanation_text = "Use your gloves to doorjack [doorobjective.doors_required] airlocks on the station."
-	objectives += doorobjective
+	var/datum/objective/gaias_vengeance/killobj = new /datum/objective/gaias_vengeance
+	killobj.wyrm_kills = rand(5,15)
+	killobj.explanation_text = "Gaia screams for revenge, rid her of [killobj.wyrm_kills] wyrm-spawn."
+	objectives += killobj
 
 	//Die for Gaia
 	var/datum/objective/martyr/martyrdom = new
@@ -73,9 +57,6 @@
 
 	if(give_objectives)
 		addObjectives()
-
-	if(give_equipment)
-		equip_space_ninja(owner.current)
 
 	owner.current.mind.assigned_role = ROLE_GAROU
 	owner.current.mind.special_role = ROLE_GAROU
