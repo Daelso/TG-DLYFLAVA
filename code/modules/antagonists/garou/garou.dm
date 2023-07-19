@@ -14,6 +14,9 @@
 	var/min_rage = 1
 	var/max_rage = 5
 
+	var/static/list/all_powers = typecacheof(/datum/action/garou,TRUE)
+
+
 /datum/antagonist/garou/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/garou = mob_override || owner.current
 	add_antag_hud(antag_hud_type, antag_hud_name, garou)
@@ -48,11 +51,19 @@
 
 
 
+/datum/antagonist/garou/proc/gain_powers()
+	for(var/path in all_powers)
+		var/datum/action/garou/S = new path
+		S.Grant(owner.current)
+
+
 /datum/antagonist/garou/greet()
 	SEND_SOUND(owner.current, sound('sound/voice/howl.ogg'))
 	to_chat(owner.current, "My caern has fallen, Gaia cries out for vengeance. The Wyrm-Spawn<font color='red'><B>MUST PAY</B></font>!<br>")
 	to_chat(owner.current, "You're lost to hauglosk, raging down from the redwood forests you bring the vengeance of Gaia. Create a legendary ending to your tale.<br>")
 	owner.announce_objectives()
+
+	gain_powers()
 
 /datum/antagonist/garou/on_gain()
 	addMemories()

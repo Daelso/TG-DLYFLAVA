@@ -8,6 +8,10 @@
 	var/req_stat = CONSCIOUS
 	var/active = FALSE//used by a few powers that toggle
 
+/datum/action/garou/proc/on_receive(src)
+	Grant(src)
+
+
 
 /datum/action/garou/crinos
 	name = "Crinos Form"
