@@ -6,11 +6,20 @@
 	flick(icon_state + "_anim", src)
 
 
-/atom/movable/screen/garou/crinos
-	name = "Crinos"
-	icon_state = "orbit"
 
-/atom/movable/screen/garou/orbit/Click()
+/atom/movable/screen/garou/crinos
+	icon_state = "orbit"
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Node Blob (ERROR)"
+	desc = "Produces a node blob for ERROR resources.<br>Node blobs will expand and activate nearby resource and factory blobs."
+
+/atom/movable/screen/garou/crinos/Initialize()
+	. = ..()
+	name = "Crinos"
+	desc = "Chimp out!"
+
+
+/atom/movable/screen/garou/crinos/Click()
 	to_chat(src, "Henlo")
 
 
